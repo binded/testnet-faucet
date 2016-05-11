@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const initFaucet = require('./')
 
 const apiKey = process.env.BLOCKTRAIL_API_KEY || 'c0bd8155c66e3fb148bb1664adc1e4dacd872548'
