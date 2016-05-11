@@ -1,0 +1,32 @@
+{
+  "name": "testnet-faucet",
+  "version": "1.0.0",
+  "description": "Library for getting testnet coins programmatically",
+  "main": "index.js",
+  "bin": {
+    "testnet-faucet": "./cli"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blockai/testnet-faucet.git"
+  },
+  "keywords": [
+    "testnet",
+    "bitcoin",
+    "faucet"
+  ],
+  "author": "Olivier Lalonde <olalonde@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/blockai/testnet-faucet/issues"
+  },
+  "homepage": "https://github.com/blockai/testnet-faucet#readme",
+  "dependencies": {
+    "async": "^2.0.0-rc.4",
+    "cb-http-client": "^0.2.3",
+    "httpify": "^3.0.0"
+  }
+}
