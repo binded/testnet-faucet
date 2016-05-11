@@ -1,6 +1,6 @@
 {
   "name": "testnet-faucet",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Library for getting testnet coins programmatically",
   "main": "index.js",
   "bin": {
