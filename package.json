@@ -4,7 +4,7 @@
   "description": "Library for getting testnet coins programmatically",
   "main": "index.js",
   "bin": {
-    "testnet-faucet": "./cli"
+    "testnet-faucet": "./cli.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
