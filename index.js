@@ -8,20 +8,19 @@ const httpify = require('httpify')
 module.exports = (apiKey) => {
   const testnet = new Blockchain('https://api.blocktrail.com/cb/v0.2.1/tBTC', { api_key: apiKey })
 
-  return (address, amount) => new Promise((resolve, reject) => {
+  return (address, amount = 1e5) => new Promise((resolve, reject) => {
     httpify({
       method: 'POST',
       url: `https://api.blocktrail.com/v1/tBTC/faucet/withdrawl?api_key=${apiKey}`,
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        address: address,
-        amount: amount,
-      })
+      body: JSON.stringify({ address, amount }),
     }, function (err, result) {
       if (err) return reject(err)
 
       if (result.body.code === 401) {
         return reject(new Error('Hit faucet rate limit; ' + result.body.msg))
+      } else if (result.body.code === 0) {
+        return reject(new Error(result.body.msg))
       }
 
       // allow for TX to be processed
@@ -38,7 +37,10 @@ module.exports = (apiKey) => {
             callback(null, unspent)
           })
         }, 600)
-      }, resolve)
+      }, (err, res) => {
+        if (err) return reject(err)
+        resolve(res)
+      })
     })
   })
 }
